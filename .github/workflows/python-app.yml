@@ -25,5 +25,5 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run Python script
-        run: python /home/vadimgl/lab/GitLabs/DevOps/git_repos/github-actions-first-lab/app.py  # Change `script.py` to your filename
+        run: python ./app.py  # Change `script.py` to your filename
 
