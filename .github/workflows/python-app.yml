@@ -3,7 +3,7 @@ name: Run Python Script
 on:
   push:
     branches:
-      - main  # Change to your desired branch
+      - main
   pull_request:
 
 jobs:
@@ -17,14 +17,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'  # Change to your required Python version
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run Python script
-        run: python ./.github/workflows/python-app.yml
-          ./app.py  # Change `script.py` to your filenames
+      - name: Ensure script has execute permissions
+        run: chmod +x app.py
 
+      - name: Run Python script with debugging
+        run: python -u app.py
